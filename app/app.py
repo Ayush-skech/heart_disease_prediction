@@ -4,12 +4,6 @@
 # to input patient details to predict the risk of heart disease.
 # It also provides SHAP-based explanations for model predictions.
 
-import os
-
-model = joblib.load(os.path.join("model.pkl"))
-scaler = joblib.load(os.path.join("scaler.pkl"))
-feature_names = joblib.load(os.path.join("feature_names.pkl"))
-
 import streamlit as st
 import pandas as pd
 import shap
