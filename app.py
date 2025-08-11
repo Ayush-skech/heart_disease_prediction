@@ -93,9 +93,18 @@ if st.sidebar.button("Predict Risk"):
     explainer = shap.Explainer(model, pd.DataFrame(input_scaled, columns=feature_names))
     shap_values = explainer(pd.DataFrame(input_scaled, columns=feature_names))
 
-    fig, ax = plt.subplots(figsize=(8, 5))
-    shap.summary_plot(shap_values, pd.DataFrame(input_scaled, columns=feature_names), plot_type="bar", show=False)
-    st.pyplot(fig)
+    # Create the SHAP plot
+    shap.summary_plot(
+        shap_values,
+        pd.DataFrame(input_scaled, columns=feature_names),
+        plot_type="bar",
+        show=False
+    )
+
+    # Display SHAP's own figure
+    st.pyplot(plt.gcf())
+    plt.clf()  # clear the figure so it doesn’t affect the next plot
+
 
     st.subheader("Explanation for This Prediction")
     fig2, ax2 = plt.subplots(figsize=(8, 5))
