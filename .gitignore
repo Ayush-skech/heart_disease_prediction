@@ -1,2 +1,8 @@
 venv\
 .idea\
+
+app.py
+feature_names.pkl
+requirements.txt
+scaler.pkl
+xgb_model.pkl
